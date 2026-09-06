@@ -1,0 +1,17 @@
+{
+  "name": "XâyPro install (static site)",
+  "install": "test -f index.html",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "python3 -m http.server 8000",
+      "description": "Serves the static XâyPro install page at http://localhost:8000"
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 8000
+    }
+  ]
+}
