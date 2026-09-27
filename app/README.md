@@ -28,13 +28,30 @@ tiêu đề, huy hiệu phiên bản, nút **Tải XayPro.apk**, nút **Sao ché
 Zalo** (có toast phản hồi), thẻ "Cách chắc chắn nhất" và thẻ "Tài khoản demo"
 (`hung / 1234`, `bao / 1234`).
 
-## Đóng gói (tuỳ chọn)
+## Đóng gói cho Windows (.exe)
 
-Tạo bản cài đặt native cho hệ điều hành hiện tại:
+`jpackage` chỉ tạo được gói cho đúng hệ điều hành đang chạy, nên để build bản
+**Windows từ Linux/macOS** dự án dùng [Conveyor](https://conveyor.hydraulic.dev):
+
+```bash
+# Cài Conveyor CLI, rồi:
+cd app
+./gradlew jar
+conveyor -f conveyor.conf make windows-zip --output-dir output
+```
+
+Kết quả: `output/xaypro-1.2.0-windows-amd64.zip` — gói **portable** đã kèm sẵn
+Java runtime + thư viện Skiko cho Windows. Người dùng chỉ cần giải nén và chạy
+`bin/XâyPro.exe` (không cần cài Java).
+
+Ghi chú: `build.gradle.kts` khai báo `windowsAmd64(...skiko-awt-runtime-windows-x64...)`
+và một luật metadata để chọn biến thể Skiko `awt`, giúp Conveyor gói được cho Windows.
+
+## Đóng gói cho hệ điều hành hiện tại (tuỳ chọn)
 
 ```bash
 ./gradlew packageDistributionForCurrentOS   # .deb / .dmg / .msi
-./gradlew packageAppImage                    # thư mục chạy trực tiếp
+./gradlew createDistributable               # thư mục chạy trực tiếp
 ```
 
 ## Cấu trúc
