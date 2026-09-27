@@ -21,12 +21,12 @@ Nếu chạy trong môi trường không có GPU (VNC/headless) và gặp lỗi
 SKIKO_RENDER_API=SOFTWARE ./gradlew run -Dskiko.renderApi=SOFTWARE
 ```
 
-## Đăng nhập demo
+## Giao diện
 
-| Tài khoản | Mật khẩu |
-| --------- | -------- |
-| `hung`    | `1234`   |
-| `bao`     | `1234`   |
+Ứng dụng tái hiện **y hệt** trang web `index.html` bằng giao diện native: logo,
+tiêu đề, huy hiệu phiên bản, nút **Tải XayPro.apk**, nút **Sao chép link để gửi
+Zalo** (có toast phản hồi), thẻ "Cách chắc chắn nhất" và thẻ "Tài khoản demo"
+(`hung / 1234`, `bao / 1234`).
 
 ## Đóng gói (tuỳ chọn)
 
@@ -39,5 +39,5 @@ Tạo bản cài đặt native cho hệ điều hành hiện tại:
 
 ## Cấu trúc
 
-- `src/main/kotlin/xaypro/Main.kt` — toàn bộ giao diện: màn hình đăng nhập và
-  màn hình tổng quan công trình (thẻ thống kê + danh sách công trình có tiến độ).
+- `src/main/kotlin/xaypro/Main.kt` — toàn bộ giao diện trang tải (giống hệt
+  `index.html`), gồm cả icon vẽ bằng Canvas và toast thông báo.
