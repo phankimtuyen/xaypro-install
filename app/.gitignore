@@ -1,0 +1,6 @@
+.gradle/
+build/
+output/
+!gradle/wrapper/gradle-wrapper.jar
+*.log
+.kotlin/

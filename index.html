@@ -3,33 +3,181 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tải XâyPro</title>
+  <title>Tải XâyPro — Ứng dụng Android</title>
+  <meta name="description" content="Tải và cài đặt ứng dụng XâyPro (APK) cho Android. Bản Kotlin/Compose v1.2.0." />
+  <meta name="theme-color" content="#2e75b6" />
   <style>
-    body{margin:0;font-family:system-ui,sans-serif;background:#f4f7fb;color:#1a2430;padding:24px 16px}
-    main{max-width:420px;margin:0 auto}
-    h1{font-size:1.45rem;margin:0 0 8px}
-    p{color:#5b6775;line-height:1.5}
-    .card{background:#fff;border:1px solid #d5dee8;border-radius:12px;padding:18px;margin-top:16px}
-    a.btn,button{display:block;width:100%;height:52px;border:0;border-radius:10px;background:#2e75b6;color:#fff;font-size:1.05rem;font-weight:600;text-decoration:none;text-align:center;line-height:52px}
-    a.sec{background:#e8eef4;color:#1a2430;margin-top:8px}
-    ol{padding-left:1.2rem;color:#5b6775}
-    li{margin:6px 0}
+    :root{
+      --bg:#eef3f9; --bg2:#dce8f5; --card:#ffffff; --ink:#1a2430; --muted:#5b6775;
+      --line:#d5dee8; --brand:#2e75b6; --brand-dark:#245e93; --brand-soft:#e8eef4;
+      --ok:#1f8a54; --radius:14px; --shadow:0 10px 30px rgba(26,36,48,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+      min-height:100dvh;padding:24px 16px;line-height:1.55;
+    }
+    main{max-width:440px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:12px;margin:8px 0 4px}
+    .logo{
+      width:56px;height:56px;border-radius:16px;flex:0 0 auto;
+      background:linear-gradient(145deg,var(--brand),var(--brand-dark));
+      display:grid;place-items:center;box-shadow:var(--shadow);
+    }
+    .logo svg{width:32px;height:32px}
+    h1{font-size:1.6rem;margin:0;letter-spacing:-.01em}
+    .ver{
+      display:inline-block;margin-top:2px;font-size:.78rem;font-weight:600;
+      color:var(--brand-dark);background:var(--brand-soft);
+      padding:2px 8px;border-radius:999px;
+    }
+    p{color:var(--muted);margin:10px 0}
+    .lead{margin-top:12px}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      padding:18px;margin-top:16px;box-shadow:var(--shadow);
+    }
+    .card h2{font-size:1.02rem;margin:0 0 10px;color:var(--ink)}
+    .btn,.sec{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      width:100%;min-height:54px;border:0;border-radius:12px;cursor:pointer;
+      font-size:1.06rem;font-weight:700;text-decoration:none;
+      transition:transform .05s ease,background .15s ease,box-shadow .15s ease;
+    }
+    .btn{background:var(--brand);color:#fff;box-shadow:0 6px 16px rgba(46,117,182,.35)}
+    .btn:hover{background:var(--brand-dark)}
+    .btn:active,.sec:active{transform:translateY(1px)}
+    .sec{background:var(--brand-soft);color:var(--ink);margin-top:10px}
+    .sec:hover{background:#dbe6f1}
+    .btn svg,.sec svg{width:22px;height:22px;flex:0 0 auto}
+    .hint{font-size:.85rem;color:var(--muted);text-align:center;margin:10px 2px 0}
+    ol{padding-left:1.25rem;margin:0;color:var(--muted)}
+    ol li{margin:8px 0}
+    ol li b{color:var(--ink)}
+    .creds{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+    .cred{
+      flex:1 1 140px;background:var(--brand-soft);border-radius:10px;
+      padding:10px 12px;font-size:.95rem;
+    }
+    .cred .u{font-weight:700;color:var(--ink)}
+    .cred .p{color:var(--muted)}
+    .toast{
+      position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+      background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;
+      font-size:.95rem;font-weight:600;opacity:0;pointer-events:none;
+      transition:opacity .2s ease,transform .2s ease;box-shadow:var(--shadow);z-index:10;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    footer{text-align:center;color:var(--muted);font-size:.8rem;margin:22px 0 6px}
+    @media (max-width:360px){h1{font-size:1.4rem}}
   </style>
 </head>
 <body>
-<main>
-  <h1>XâyPro — cài đặt</h1>
-  <p>App Grok điện thoại không cho tải APK. Dùng Chrome ở đây, hoặc tải trên máy tính rồi gửi Zalo.</p>
-  <div class="card">
-    <p style="color:#1a2430;font-weight:600;margin-top:0">Cách chắc chắn nhất</p>
-    <ol>
-      <li>Mở cuộc chat XâyPro trên <b>máy tính</b> (Chrome).</li>
-      <li>Tải file <b>XayPro.apk</b>.</li>
-      <li>Gửi file qua <b>Zalo</b> cho điện thoại này.</li>
-      <li>Mở file trên điện thoại → Cài đặt.</li>
-      <li>Đăng nhập hung / 1234 hoặc bao / 1234.</li>
-    </ol>
-  </div>
-</main>
+  <main>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 20h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5 20V9l7-5 7 5v11" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M10 20v-5h4v5" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h1>XâyPro</h1>
+        <span class="ver">Android • v1.2.0</span>
+      </div>
+    </div>
+
+    <p class="lead">
+      Ứng dụng quản lý xây dựng cho Android (Kotlin/Compose). Tải file cài đặt
+      <b>APK</b> bên dưới. Nếu điện thoại chặn tải trong app Grok, hãy mở trang này
+      bằng <b>Chrome</b> hoặc tải trên máy tính rồi gửi qua Zalo.
+    </p>
+
+    <div class="card">
+      <a class="btn" id="download" href="XayPro.apk" download rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3v12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M7 11l5 5 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 19h16" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Tải XayPro.apk
+      </a>
+      <button class="sec" id="copy" type="button">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Sao chép link để gửi Zalo
+      </button>
+      <p class="hint">Sau khi tải xong, mở file → nếu máy hỏi thì bật “Cho phép cài từ nguồn này”.</p>
+    </div>
+
+    <div class="card">
+      <h2>Cách chắc chắn nhất</h2>
+      <ol>
+        <li>Mở cuộc chat XâyPro trên <b>máy tính</b> (Chrome).</li>
+        <li>Bấm <b>Tải XayPro.apk</b> ở trên.</li>
+        <li>Gửi file qua <b>Zalo</b> cho điện thoại này.</li>
+        <li>Mở file trên điện thoại → <b>Cài đặt</b>.</li>
+        <li>Đăng nhập bằng tài khoản demo bên dưới.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Tài khoản demo</h2>
+      <div class="creds">
+        <div class="cred"><div class="u">hung</div><div class="p">Mật khẩu: 1234</div></div>
+        <div class="cred"><div class="u">bao</div><div class="p">Mật khẩu: 1234</div></div>
+      </div>
+    </div>
+
+    <footer>XâyPro © 2026 — Bản Android native Kotlin/Compose</footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Đã sao chép link!</div>
+
+  <script>
+    (function () {
+      var apkLink = document.getElementById('download');
+      var copyBtn = document.getElementById('copy');
+      var toast = document.getElementById('toast');
+      var toastTimer;
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+      }
+
+      function apkUrl() {
+        return new URL(apkLink.getAttribute('href'), window.location.href).href;
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var url = apkUrl();
+        function fallback() {
+          var t = document.createElement('textarea');
+          t.value = url; t.setAttribute('readonly', '');
+          t.style.position = 'absolute'; t.style.left = '-9999px';
+          document.body.appendChild(t); t.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(t);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(
+            function () { showToast('Đã sao chép link!'); },
+            function () { fallback(); showToast('Đã sao chép link!'); }
+          );
+        } else {
+          fallback();
+          showToast('Đã sao chép link!');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
